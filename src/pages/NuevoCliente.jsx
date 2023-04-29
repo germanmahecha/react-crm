@@ -31,7 +31,7 @@ export async function action({request}){
 function NuevoCliente() {
     const navigate = useNavigate()
     const errores = useActionData()
-    console.log(errores)
+    //console.log(errores)
     return(
         <>
             <h1 className="font-black text-4xl text-blue-900">Nuevo cliente</h1>
