@@ -10,6 +10,8 @@ function Index() {
     //recuperar clientes
     const clientes = useLoaderData();
 
+    //Error bouanderies
+
     return(
         <>
             <h1 className="font-black text-4xl text-blue-900">Clientes</h1>
