@@ -1,7 +1,7 @@
 import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
 import Formulario from "../components/Formulario.jsx";
 import Error from "../components/Error.jsx";
-import { agregarCliente } from "../data/clientes.jsx";
+import { agregarCliente } from "../data/clientes.js";
 
 export async function action({request}){
     const formData = await request.formData()
@@ -28,8 +28,10 @@ export async function action({request}){
     }
 
     await agregarCliente(datos)
+    //No continua hasta que no finalice la linea anterior
 
     return redirect('/')
+    //Redirect se usa en actions y loaders
 }
 function NuevoCliente() {
     const navigate = useNavigate()
@@ -43,10 +45,13 @@ function NuevoCliente() {
                 <button
                     className="bg-blue-800 text-white px-3 py-1 font-bold uppercase"
                     onClick={()=>navigate('/')}
+                    //Navigate se utiliza para redireccionar con un boton
                 >Volver</button>
             </div>
             <div className="bg-white shadow mt-20 rounded-md md:w-3/4 mx-auto px-5 py-10">
-                {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
+
+                {errores?.length && errores.map( (error, i) => <Error key={i}>{error}</Error>)}
+
                 <Form
                     method="POST"
                     noValidate
